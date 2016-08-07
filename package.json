@@ -1,0 +1,14 @@
+{
+  "name": "bartmaochatroom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "Audio chat support for BartMaoEnglish"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^1.4.8"
+  }
+}
