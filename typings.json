@@ -1,0 +1,10 @@
+{
+  "globalDependencies": {
+    "fs-extra": "registry:dt/fs-extra#0.0.0+20160517121359",
+    "gulp": "registry:dt/gulp#3.8.0+20160724062653",
+    "gulp-typescript": "registry:dt/gulp-typescript#0.0.0+20160317120654",
+    "node": "registry:dt/node#6.0.0+20160807145350",
+    "orchestrator": "registry:dt/orchestrator#0.0.0+20160316155526",
+    "socket.io": "registry:dt/socket.io#1.4.4+20160317120654"
+  }
+}
