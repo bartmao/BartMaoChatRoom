@@ -1,4 +1,4 @@
-import {BartMaoChatRoomServerImpl} from 'src/ts/server';
+import {BartMaoChatRoomServerImpl} from 'src/server/server';
 
 let srv = new BartMaoChatRoomServerImpl();
-srv.start();
+srv.start();    

@@ -1,4 +1,3 @@
-/// <reference path="../../typings/index.d.ts" />
 
 import http = require('http');
 import socketio = require('socket.io');

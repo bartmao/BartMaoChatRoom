@@ -1,4 +1,3 @@
-/// <reference path="../../typings/index.d.ts" />
 define(["require", "exports", 'http', 'socket.io', 'fs'], function (require, exports, http, socketio, fs) {
     "use strict";
     var BartMaoChatRoomServerImpl = (function () {

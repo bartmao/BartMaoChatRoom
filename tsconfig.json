@@ -1,6 +1,6 @@
 {
-    "compilerOptions": {
-		"module": "amd",
+	"compilerOptions": {
+		"module": "commonjs",
 		"moduleResolution": "classic",
 		"noImplicitAny": false,
 		"removeComments": false,
@@ -9,8 +9,10 @@
 		"sourceMap": false,
 		"experimentalDecorators": true,
 		"declaration": true
-    },
-    "include": [
-        "src/**/*"
-    ]
+	},
+	"files": [
+		"typings/index.d.ts",
+		"src/**/*.ts",
+		"app.ts"
+	]
 }
