@@ -10,9 +10,8 @@
 		"experimentalDecorators": true,
 		"declaration": true
 	},
-	"files": [
-		"typings/index.d.ts",
-		"src/**/*.ts",
-		"app.ts"
+	"exclude": [
+		"node_modules",
+		"typings"
 	]
 }
