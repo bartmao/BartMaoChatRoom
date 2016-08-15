@@ -9,7 +9,7 @@ var BartMaoChatRoomServerImpl = (function () {
     }
     BartMaoChatRoomServerImpl.prototype.start = function () {
         this.srv = http.createServer(this.httpHanlder);
-        this.srv.listen(80);
+        this.srv.listen(this.port);
         this.io = socketio(this.srv);
         this.io.on('connection', this.socketHandler);
     };
