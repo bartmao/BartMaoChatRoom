@@ -21,7 +21,7 @@ export class BartMaoChatRoomServerImpl implements BartMaoChatRoomServer {
 
         this.io = socketio(this.srv);
         this.io.on('connection', this.socketHandler);
-    }   
+    }
 
     stop() {
         this.srv.close();
