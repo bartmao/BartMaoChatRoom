@@ -4,7 +4,7 @@ var socketio = require('socket.io');
 var fs = require('fs');
 var BartMaoChatRoomServerImpl = (function () {
     function BartMaoChatRoomServerImpl(port) {
-        if (port === void 0) { port = 8899; }
+        if (port === void 0) { port = 80; }
         this.port = port;
     }
     BartMaoChatRoomServerImpl.prototype.start = function () {

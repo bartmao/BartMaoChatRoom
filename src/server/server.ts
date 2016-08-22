@@ -12,7 +12,7 @@ export class BartMaoChatRoomServerImpl implements BartMaoChatRoomServer {
     private srv: http.Server;
     private io: SocketIO.Server;
 
-    constructor(public port = 8899) {
+    constructor(public port = 80) {
     }
 
     start() {
