@@ -4,7 +4,7 @@ var socketio = require('socket.io');
 var fs = require('fs');
 var BartMaoChatRoomServerImpl = (function () {
     function BartMaoChatRoomServerImpl(port) {
-        if (port === void 0) { port = 80; }
+        if (port === void 0) { port = 8000; }
         this.port = port;
     }
     BartMaoChatRoomServerImpl.prototype.start = function () {
@@ -37,8 +37,9 @@ var BartMaoChatRoomServerImpl = (function () {
     };
     BartMaoChatRoomServerImpl.prototype.socketHandler = function (socket) {
         socket.emit('news', { hello: 'world' });
-        socket.on('my other event', function (data) {
-            console.log(data);
+        socket.on('sound', function (data) {
+            console.log('receive sound');
+            socket.emit('othersound', {sound: data});
         });
     };
     return BartMaoChatRoomServerImpl;
