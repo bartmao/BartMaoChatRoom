@@ -30,22 +30,23 @@ socket.on('othersound', function (pak) {
         for (var channel = 0; channel < processor.numberOfInputs; ++channel) {
             var inputData = audioProcessingEvent.inputBuffer.getChannelData(channel);
             var outputData = audioProcessingEvent.outputBuffer.getChannelData(channel);
+            var orignArr = new Array(outputData.length);
             for (var sample = 0; sample < outputData.length; ++sample) {
-                outputData[sample] = inputData[sample] + (Math.random() * 2 - 1) * 0.2;
+                outputData[sample] = 0;
+                orignArr[sample] = inputData[sample] + (Math.random() * 2 - 1) * 0.2;
             }
 
-            var thisArr = outputData.slice();
-            var arrayToTrans = float32Array2IntArray(thisArr);
-            pushStream(arrayToTrans);
-            var restoredArray = intArray2Float32Array(arrayToTrans);
-            console.log(arrayToTrans[0] + "     " + restoredArray[0]);
+            pushStream(float32Array2IntArray(orignArr));
+            //var restoredArray = float32Array2IntArray(toTransferArray);
+            console.log(orignArr[0]);
         }
     }
-    oscillator.connect(processor);
+    
 })();
 
 var stopBtn = document.querySelector('#stop');
 stopBtn.addEventListener('click', function () {
+    oscillator.disconnect();
     processor.disconnect();
 });
 
@@ -65,7 +66,7 @@ startBtn.addEventListener('click', function () {
 
     //     }
     // );
-
+    oscillator.connect(processor);
     processor.connect(audioContext.destination);
 });
 
