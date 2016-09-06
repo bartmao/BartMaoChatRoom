@@ -6,8 +6,10 @@ interface Window{
 }
 
 interface AudioContext{
+    new(): AudioContext;
     createMediaStreamSource(MediaStream): MediaElementAudioSourceNode;
     createJavaScriptNode(bufferSize?: number, numberOfInputChannels?: number, numberOfOutputChannels?: number): ScriptProcessorNode;
 }
 
 interface windows extends Window{}
+

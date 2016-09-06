@@ -1,0 +1,7 @@
+interface jQuery{
+
+}
+
+declare var $:{
+
+}

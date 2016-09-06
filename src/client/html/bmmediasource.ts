@@ -1,14 +1,18 @@
+import {EventEmitter} from 'events'
+
 export interface BMMediaSource {
     type: string;
     sourceNode: MediaElementAudioSourceNode;
+    //(event: 'available', cb: ()=>void): void;
 }
 
-export class DefaultAudioMediaSource implements BMMediaSource {
+export class DefaultAudioMediaSource extends EventEmitter implements BMMediaSource {
     static classLoad: Boolean = false;
     type: string = 'Audio';
     sourceNode: MediaElementAudioSourceNode;
 
     constructor(public audioContext: AudioContext) {
+        super();
         if (!DefaultAudioMediaSource.classLoad) {
             navigator.getUserMedia = (navigator.getUserMedia ||
                 navigator.webkitGetUserMedia ||
@@ -18,6 +22,7 @@ export class DefaultAudioMediaSource implements BMMediaSource {
                 function (stream) {
                     this.sourceNode = audioContext.createMediaStreamSource(stream);
                     //this.sourceNode.connect(processor);
+                    this.emit('sourceloaded');
                     console.log('successfully get the microphone');
                 },
                 function () {
