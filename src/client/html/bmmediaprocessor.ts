@@ -4,7 +4,6 @@ export interface BMMediaProcessor {
     handleType: string;
     processNode: ScriptProcessorNode;
     manager: BMMediaProcessorManager;
-    context: AudioContext;
 }
 
 export class BMMediaProcessorManager {
@@ -14,14 +13,16 @@ export class BMMediaProcessorManager {
     public context: AudioContext;
     constructor(private socketUrl: string, ...mediaSources: BMMediaSource[]) {
         this.mediaSources = mediaSources.slice();
-        if (mediaSources.length > 0) this.context = mediaSources[0].sourceNode.context;
+        if (mediaSources.length > 0)
+            mediaSources[0].on('ready', function () {
+                this.context = mediaSources[0].sourceNode.context;
+            });
 
         this.socket = io(socketUrl);
     }
 
     add(...newProcessors: BMMediaProcessor[]) {
         newProcessors.forEach((v, i) => {
-            v.context = this.context;
             v.manager = this;
             this.processors.push(v);
             if (i > 0)
@@ -44,7 +45,6 @@ export class BMMediaProcessorManager {
 export class DefaultBMMedsiaProcessor implements BMMediaProcessor {
     handleType: string = 'Audio';
     manager: BMMediaProcessorManager;
-    context: AudioContext;
 
     private _processNode: ScriptProcessorNode;
 
