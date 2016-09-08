@@ -1,4 +1,5 @@
-import {BMMediaSource}  from './bmmediasource'
+import {BMEvent, IBMEvent} from './bmevent'
+import {BMMediaSource, MicrophoneMediaSource}  from './bmmediasource'
 
 export interface BMMediaProcessor {
     handleType: string;
@@ -8,10 +9,10 @@ export interface BMMediaProcessor {
 
 export class BMMediaProcessorManager {
     private processors: Array<BMMediaProcessor> = [];
-    private mediaSources: BMMediaSource[] = [];
+    private mediaSources: MicrophoneMediaSource[] = [];
     public socket: Socket;
     public context: AudioContext;
-    constructor(private socketUrl: string, ...mediaSources: BMMediaSource[]) {
+    constructor(private socketUrl: string, ...mediaSources: MicrophoneMediaSource[]) {
         this.mediaSources = mediaSources.slice();
         if (mediaSources.length > 0)
             mediaSources[0].on('ready', function () {
